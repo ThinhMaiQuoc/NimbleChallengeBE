@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const knexConfig = {
-    client: 'mysql',
+    client: 'pg',
     connection: {
         host: process.env.DB_HOST,
         user: process.env.DB_USER,
