@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 import authRouter from './routes/auth.route.js';
 import { logger } from './middlewares/logger.middleware.js';
 import { errorHandler } from './middlewares/error.middleware.js';
+import keywordRouter from './routes/keyword.route.js';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(logger);
 app.use(limiter);
 
 app.use('/api/auth', authRouter);
+app.use('/api/keywords', keywordRouter);
 
 app.use('*', (req, res) => {
     res.status(404).send('404 Not Found');
