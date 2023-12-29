@@ -1,4 +1,4 @@
-import { processKeywordsUpload } from '../services/keyword.service.js';
+import { processKeywordsUpload } from '../services/processKeywords.service.js';
 
 const uploadKeywords = async (req, res) => {
     if (!req.file) {

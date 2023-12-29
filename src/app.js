@@ -5,7 +5,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import authRouter from './routes/auth.route.js';
 import { logger } from './middlewares/logger.middleware.js';
-import { errorHandler } from './middlewares/error.middleware.js';
+import { errorMiddleware } from './middlewares/error.middleware.js';
 import keywordRouter from './routes/keyword.route.js';
 
 const app = express();
@@ -30,7 +30,7 @@ app.use('*', (req, res) => {
     res.status(404).send('404 Not Found');
 });
 
-app.use(errorHandler);
+app.use(errorMiddleware);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
