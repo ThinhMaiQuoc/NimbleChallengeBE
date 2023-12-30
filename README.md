@@ -1,30 +1,33 @@
-Project Name: NimbleChallengeBE
-Overview
-NimbleChallengeBE is a backend service designed to support a web application for extracting and analyzing data from Google search results. This service handles user authentication, keyword management, data scraping, and provides insightful analytics.
+# NimbleChallengeBE
 
-Features
-1. User Authentication
-Sign Up: Users can register an account using their email, username, and password.
-Sign In: Users can log in to their account to access the application.
-2. Keyword Management
-Upload Keywords: Authenticated users can upload a CSV file containing keywords (up to 100).
-Keyword Processing: Each keyword is used to search on Google, and the results are stored in the database.
-3. Data Scraping
-Scraping Search Results: For each keyword, the application scrapes the first page of Google search results and stores:
-Number of AdWords advertisers on the page.
-Total number of links on the page.
-Total search results count for the keyword.
-HTML content of the page.
-4. Data Visualization
-Keyword List: Users can view a list of their uploaded keywords and corresponding search result information.
-Search Reports: Provides a feature to search across all reports and returns aggregate information like total searches, AdWords count, etc.
-5. Additional Features
-API Endpoints: Besides the web interface, certain functionalities are also accessible through RESTful API endpoints.
-Missing Features
-Unit Tests: Currently, the project does not include unit tests. This is a critical aspect that needs to be implemented for ensuring the reliability and stability of the application.
-Technology Stack
-Node.js: Server-side JavaScript runtime.
-Express: Web application framework for Node.js.
-PostgreSQL: Relational database management system.
-Knex.js: SQL query builder for JavaScript.
-Bull: Queue system for handling data scraping tasks.
+## Overview
+
+NimbleChallengeBE is a backend service for a web application that extracts and analyzes data from Google search results. It manages user authentication, keyword uploads, data scraping, and provides insightful analytics.
+
+## Features
+
+### User Authentication
+- **Sign Up and Sign In**: Secure user registration and login functionality.
+
+### Keyword Management
+- **CSV Upload**: Users can upload CSV files with up to 100 keywords.
+- **Keyword Processing**: Each uploaded keyword triggers a Google search, and results are stored.
+
+### Data Scraping
+- **Automated Scraping**: Extracts data such as AdWords count, link count, and total search results from Google.
+
+### Data Visualization
+- **Keyword and Results Viewing**: Users can view their uploaded keywords and corresponding search results.
+
+### Additional Features
+- **RESTful API**: Provides various endpoints for interacting with the application.
+
+## Missing Features
+- **Unit Tests**: Unit tests are currently not implemented and are a necessary addition for future development.
+
+## Technology Stack
+- **Node.js**: Server-side JavaScript runtime.
+- **Express**: Web application framework for Node.js.
+- **PostgreSQL**: Database for storing user data and search results.
+- **Knex.js**: SQL query builder.
+- **Bull**: Queue system for managing data scraping tasks.
