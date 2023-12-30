@@ -42,6 +42,14 @@ class SearchResultService {
             throw new DatabaseError(`Failed to retrieve search results: ${error.message}`);
         }
     }
+
+    async searchReports(query) {
+        return db('search_results')
+            .join('keywords', 'search_results.keyword_id', '=', 'keywords.keyword_id')
+            .where('keywords.keyword', '=', `${query}`)
+            .select('search_results.*');
+
+    };
 }
 
 export default new SearchResultService();
