@@ -1,11 +1,12 @@
 import db from '../configs/database.config.js';
+import { DatabaseError } from '../errors/database.error.js';
 class KeywordService {
     async findExistingKeywords(uniqueKeywords, userId) {
         try {
             return await db('keywords')
                 .whereIn('keyword', uniqueKeywords)
                 .andWhere('user_id', userId)
-                .pluck('keyword');
+                .select('keyword_id', 'keyword');
         } catch (error) {
             throw new DatabaseError(`Failed find keyword: ${error.message}`);
         }
