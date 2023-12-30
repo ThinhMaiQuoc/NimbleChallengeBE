@@ -2,7 +2,7 @@ import searchResultService from '../services/searchResult.service.js';
 
 const getKeywordReport = async (req, res) => {
     const { query } = req.query;
-    if (query) {
+    if (!query) {
         return res.status(400).send('No keyword provided.');
     }
 
