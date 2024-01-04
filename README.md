@@ -31,3 +31,11 @@ NimbleChallengeBE is a backend service for a web application that extracts and a
 - **PostgreSQL**: Database for storing user data and search results.
 - **Knex.js**: SQL query builder.
 - **Bull**: Queue system for managing data scraping tasks.
+
+## Environment Setup
+- **Node version**: 18.16.0
+- **Database used**: PostgreSQL
+- Copy `.env.example` to a new file named `.env`.
+- Fill in the necessary environment variables in your `.env` file.
+- Run `npm install` to install all dependencies.
+- Run `npm run dev` to start the application in development mode.
