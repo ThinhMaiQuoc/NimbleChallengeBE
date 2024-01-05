@@ -1,5 +1,6 @@
 import puppeteer from 'puppeteer';
 import { getRandomDelay } from '../utils/timer.util.js';
+import { chromium } from 'playwright';
 
 const scrapeSearchResults = async (keyword) => {
     try {
@@ -39,4 +40,36 @@ const scrapeSearchResults = async (keyword) => {
     }
 };
 
-export { scrapeSearchResults };
+const scrapeSearchResultsWithPlayWright = async (keyword) => {
+    try {
+        const browser = await chromium.launch();
+        const context = await browser.newContext();
+        const page = await context.newPage();
+
+        await page.goto('https://www.google.com', { waitUntil: 'domcontentloaded' });
+        await page.fill('textarea[name="q"]', keyword);
+        await page.keyboard.press('Enter');
+        await page.waitForSelector('div#search');
+
+        const searchResults = await page.evaluate(() => {
+            let adWordsCount = document.querySelectorAll('.ads-ad').length;
+            let links = [...document.querySelectorAll('.tF2Cxc .yuRUbf a')].map(el => el.href);
+            let searchInfo = document.querySelector('#result-stats')?.innerText;
+            let htmlContent = document.documentElement.outerHTML;
+
+            return {
+                adWordsCount,
+                links,
+                searchInfo,
+                htmlContent
+            };
+        });
+
+        await browser.close();
+        return searchResults;
+    } catch (error) {
+        throw new Error(`Error scraping data for keyword ${keyword}: ${error.message}`);
+    }
+};
+
+export { scrapeSearchResults, scrapeSearchResultsWithPlayWright };
