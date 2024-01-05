@@ -16,7 +16,7 @@ const scrapeSearchResults = async (keyword) => {
 
         await page.waitForSelector('div#search');
 
-        await page.waitForTimeout(getRandomDelay());
+        await new Promise(resolve => setTimeout(resolve, getRandomDelay()));
 
         const searchResults = await page.evaluate(() => {
             let adWordsCount = document.querySelectorAll('.ads-ad').length;
