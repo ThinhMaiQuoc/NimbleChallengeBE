@@ -3,7 +3,11 @@ import { getRandomDelay } from '../utils/timer.util.js';
 
 const scrapeSearchResults = async (keyword) => {
     try {
-        const browser = await puppeteer.launch();
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox']
+        });
+
         const page = await browser.newPage();
 
         await page.goto('https://www.google.com', { waitUntil: 'networkidle2' });

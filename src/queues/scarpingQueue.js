@@ -2,7 +2,7 @@ import Queue from 'bull';
 import { scrapeSearchResults } from '../services/scraper.service.js';
 import searchResultService from '../services/searchResult.service.js';
 
-const scrapingQueue = new Queue('scraping', 'redis://127.0.0.1:6379');
+const scrapingQueue = new Queue('scraping', `redis://${process.env.REDIS_HOST}}:6379`);
 
 scrapingQueue.process(async (job) => {
     const { keyword_id, keyword, jobId } = job.data;
