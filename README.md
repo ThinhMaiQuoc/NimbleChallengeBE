@@ -38,4 +38,5 @@ NimbleChallengeBE is a backend service for a web application that extracts and a
 - Copy `.env.example` to a new file named `.env`.
 - Fill in the necessary environment variables in your `.env` file.
 - Run `npm install` to install all dependencies.
+- Run `knex migrate:latest` to start migrating the database.
 - Run `npm run dev` to start the application in development mode.
